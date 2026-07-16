@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Locked Archive</title>
+
+<style>
+body{
+    margin:0;
+    background:#0b0b0b;
+    color:#e0e0e0;
+    font-family:Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+#box{
+    background:#1a1a1a;
+    border:2px solid #555;
+    border-radius:10px;
+    padding:35px;
+    width:350px;
+    text-align:center;
+}
+
+h1{
+    margin-top:0;
+}
+
+input{
+    width:160px;
+    padding:10px;
+    font-size:20px;
+    text-align:center;
+    background:#111;
+    color:white;
+    border:1px solid #666;
+}
+
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+#error{
+    color:#ff5555;
+    margin-top:15px;
+}
+
+#message{
+    display:none;
+    font-size:22px;
+    color:#8cff8c;
+}
+</style>
+
+</head>
+<body>
+
+<div id="box">
+
+<div id="lock">
+<h1>🔒 LOCKED</h1>
+<p>Enter Access Code</p>
+
+<input
+type="password"
+id="code"
+maxlength="4"
+autocomplete="off">
+
+<br>
+
+<button onclick="unlock()">Unlock</button>
+
+<p id="error"></p>
+</div>
+
+<div id="message">
+<h2>ACCESS GRANTED</h2>
+
+<p><strong>Under the bed is the next clue.</strong></p>
+
+</div>
+
+</div>
+
+<script>
+
+function unlock(){
+
+const code=document.getElementById("code").value;
+
+if(code==="9123"){
+document.getElementById("lock").style.display="none";
+document.getElementById("message").style.display="block";
+}else{
+document.getElementById("error").textContent="Incorrect access code.";
+}
+
+}
+
+document.getElementById("code").addEventListener("keydown",function(e){
+if(e.key==="Enter") unlock();
+});
+
+</script>
+
+</body>
+</html>
